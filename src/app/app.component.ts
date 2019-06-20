@@ -86,7 +86,7 @@ export class AppComponent {
     this.page = 1;
     this.searchService.startSearch(text).subscribe((result) => {
       this.requestId = result.requestId;
-      this.getData();
+      setTimeout(() => this.getData(), 1000);
     });
   }
 

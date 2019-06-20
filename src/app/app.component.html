@@ -40,13 +40,16 @@
     <tbody>
     <tr *ngFor="let item of currentData()">
       <td>
-        {{item.date | date: 'dd-MM-yyyy hh:mm:ssZ'}}
+        <span *ngIf="item.answered" style="color:#000000">{{item.date | date: 'dd-MM-yyyy hh:mm:ssZ'}}</span>
+        <span *ngIf="!item.answered" style="color:#AEB6BF">{{item.date | date: 'dd-MM-yyyy hh:mm:ssZ'}}</span>
       </td>
       <td>
-        {{item.title}}
+        <span *ngIf="item.answered" style="color:#000000">{{item.title}}</span>
+        <span *ngIf="!item.answered" style="color:#AEB6BF">{{item.title}}</span>
       </td>
       <td>
-        {{item.author}}
+        <span *ngIf="item.answered" style="color:#000000">{{item.author}}</span>
+        <span *ngIf="!item.answered" style="color:#AEB6BF">{{item.author}}</span>
       </td>
       <td>
         <a target="_blank" rel="noopener" href="{{item.sourceLink}}">Source</a>
@@ -71,8 +74,8 @@
     Next
   </button>
   <button *ngIf="total <= 0"
-    class="btn btn-default"
-    [disabled]="true">
+          class="btn btn-default"
+          [disabled]="true">
     page {{page}} from ?
   </button>
   <button *ngIf="total > 0"
