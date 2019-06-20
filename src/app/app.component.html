@@ -17,7 +17,7 @@
   </label>
   <button
     type="submit"
-    [disabled]="!loading"
+    [disabled]="loading"
     (click)="search(searchInput.value)"
     class="btn btn-default">
     Search
@@ -58,15 +58,27 @@
 <div class="btn-group">
   <button
     class="btn btn-default"
+    id="prevBtn"
     (click)="prev()"
-    [disabled]="isHasPrev()">
+    [disabled]="!isHasPrev()">
     Previous
   </button>
   <button
     class="btn btn-default"
+    id="nextBtn"
     (click)="next()"
-    [disabled]="isHasNext()">
+    [disabled]="!isHasNext()">
     Next
+  </button>
+  <button *ngIf="total <= 0"
+    class="btn btn-default"
+    [disabled]="true">
+    page {{page}} from ?
+  </button>
+  <button *ngIf="total > 0"
+          class="btn btn-default"
+          [disabled]="true">
+    page {{page}} from {{total}}
   </button>
 </div>
 
